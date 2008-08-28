@@ -1,0 +1,6 @@
+ignorecase on
+altscreen on
+autodetach on
+startup_message off
+vbell off
+silencewait 15
