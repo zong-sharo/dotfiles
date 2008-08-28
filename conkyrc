@@ -1,0 +1,65 @@
+own_window yes
+own_window_type override
+own_window_transparent 1
+#override_utf8_locale yes
+
+#font 6x10
+font -*-*-*-*-*-*-10-*-*-*-*-*-*-r
+double_buffer yes
+use_xft no
+
+update_interval 0.5
+background
+maximum_width 310
+
+draw_shades no
+draw_outline yes
+draw_borders no
+draw_graph_borders yes
+
+border_margin 8
+border_width 1
+
+no_buffers yes #free mem == w/o fs buffers
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+default_color grey80
+default_outline_color black
+
+mpd_host 127.0.0.1
+mpd_port 6600
+
+TEXT
+ Uptime : $uptime ${alignr}${time %T}
+ Cpu : $cpu%
+${cpugraph 32,305}
+ Mem : $mem/$memmax ${alignr 125}$memperc% $membar
+ Swap : $swap/$swapmax ${alignr 125}$swapperc% $swapbar
+ Processes : $processes
+ Running : $running_processes
+$stippled_hr
+ down : ${downspeed eth1} kb/s ${alignr 1}up : ${upspeed eth1} kb/s
+${downspeedgraph eth1 32,150} ${upspeedgraph eth1 32,150}
+$stippled_hr
+ / ${fs_used /}/${fs_size /} ${alignr 125}${fs_used_perc /}% ${fs_bar /}
+ /home ${fs_used /home}/${fs_size /home} ${alignr 125}${fs_used_perc /home}% ${fs_bar /home}
+$stippled_hr
+${if_running mpd}${alignc}$mpd_title
+ ${alignc}$mpd_status
+ $mpd_bar
+ Volume : $mpd_vol%       repeat : $mpd_repeat       random : $mpd_random
+$stippled_hr
+$endif
+ Name              PID     CPU%   MEM%
+Cpu usage
+ ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
+ ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
+ ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
+ ${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
+Mem usage
+ ${top_mem name 1} ${top_mem pid 1} ${top_mem cpu 1} ${top_mem mem 1}
+ ${top_mem name 2} ${top_mem pid 2} ${top_mem cpu 2} ${top_mem mem 2}
+ ${top_mem name 3} ${top_mem pid 3} ${top_mem cpu 3} ${top_mem mem 3}
+$stippled_hr

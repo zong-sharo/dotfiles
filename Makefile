@@ -1,7 +1,8 @@
 CONFIGS = \
 		  zshrc \
 		  screenrc \
-		  toprc
+		  toprc \
+		  conkyrc
 
 BACKUP=numbered
 
