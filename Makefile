@@ -4,7 +4,8 @@ CONFIGS = \
 		  toprc \
 		  conkyrc \
 		  xmonad.hs \
-		  xinitrc
+		  xinitrc \
+		  Xresources
 
 BACKUP=numbered
 MODE=644

@@ -6,8 +6,12 @@ xsetroot -solid 'black'
 setxkbmap -symbols 'pc+us+ru(winkeys):2+group(caps_toggle)' -compat 'complete+ledscroll(group_lock)'
 
 conky
-xrdb .Xresources
-#xmodmap .Xmodmap
+if [[ $(hostname) == "ep" ]]
+then
+    XRDB_FLAGS="-DCMUTT"
+fi
+
+xrdb $XRDB_FLAGS .Xresources
 
 if [[ ! `pgrep urxvtd -u kleptos` ]]
 then

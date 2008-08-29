@@ -1,0 +1,48 @@
+#ifdef CMUTT
+Rxvt*font:xft:CMU Typewriter Text:size=13
+Rxvt*boldFont:xft:CMU Typewriter Text:bold:size=13
+Rxvt*italicFont:xft:CMU Typewriter Text:italic:size=13
+#else
+Rxvt*font:xft:Liberation Mono:size=11
+Rxvt*boldFont:xft:Liberation Mono:bold:size=11
+Rxvt*italicFont:xft:Liberation Mono:italic:size=11
+#endif
+
+Rxvt*jumpScroll:true
+Rxvt*mouseWheelScrollPage:true
+
+Rxvt*locale:true
+
+Rxvt*saveLines:5000
+Rxvt*scrollBar:false
+Rxvt*cursorBlink:false
+
+Rxvt*background:#3f3f3f
+Rxvt*foreground:#dcdccc
+
+Rxvt*pointerColorBackground:#3f3f3f
+Rxvt*pointerColor:#dcdccc
+
+Rxvt*cursorColor:#ff9020
+
+!light yellow
+Rxvt*colorBD:#f0dfaf
+!light red
+Rxvt*colorUL:#dca3a3
+
+Rxvt*color0:#3f3f3f
+Rxvt*color1:#e37170
+Rxvt*color2:#60b48a
+Rxvt*color3:#dfaf8f
+Rxvt*color4:#506070
+Rxvt*color5:#dc8cc3
+Rxvt*color6:#8cd0d3
+Rxvt*color7:#dcdccc
+Rxvt*color8:#709080
+Rxvt*color9:#dca3a3
+Rxvt*color10:#c3bf9f
+Rxvt*color11:#f0dfaf
+Rxvt*color12:#94bff3
+Rxvt*color13:#ec93d3
+Rxvt*color14:#93e0e3
+Rxvt*color15:#ffffff
