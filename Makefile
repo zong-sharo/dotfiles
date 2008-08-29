@@ -3,10 +3,12 @@ CONFIGS = \
 		  screenrc \
 		  toprc \
 		  conkyrc \
-		  xmonad.hs
+		  xmonad.hs \
+		  xinitrc
 
 BACKUP=numbered
-INSTALL=install --backup=$(BACKUP) --mode=644
+MODE=644
+INSTALL=install --backup=$(BACKUP) --mode=$(MODE)
 
 default: all
 
@@ -17,5 +19,8 @@ install-file-%: %
 
 install-file-xmonad.hs: xmonad.hs
 	$(INSTALL) $< $(HOME)/.xmonad/$<
+
+install-file-xinitrc: xinitrc
+	install --backup=$(BACKUP) --mode=755 $< $(HOME)/.$<
 
 install: $(foreach f, $(CONFIGS), install-file-$(f) )
