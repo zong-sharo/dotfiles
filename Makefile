@@ -5,7 +5,8 @@ CONFIGS = \
 		  conkyrc \
 		  xmonad.hs \
 		  xinitrc \
-		  Xresources
+		  Xresources \
+		  vimperatorrc
 
 BACKUP=numbered
 MODE=644
