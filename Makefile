@@ -12,17 +12,24 @@ BACKUP=numbered
 MODE=644
 INSTALL=install --backup=$(BACKUP) --mode=$(MODE)
 
-default: all
 
 all : $(CONFIGS)
 
-install-file-%: %
+install-%: %
 	$(INSTALL) $* $(HOME)/.$* 
 
-install-file-xmonad.hs: xmonad.hs
+collect-%:
+	cp $(HOME)/.$* $*
+
+install-xmonad.hs: xmonad.hs
 	$(INSTALL) $< $(HOME)/.xmonad/$<
 
-install-file-xinitrc: xinitrc
+collect-xmonad.hs:
+	cp $(HOME)/.xmonad/xmonad.hs xmonad.hs
+
+install-xinitrc: xinitrc
 	install --backup=$(BACKUP) --mode=755 $< $(HOME)/.$<
 
-install: $(foreach f, $(CONFIGS), install-file-$(f) )
+install: $(foreach f, $(CONFIGS), install-$(f) )
+
+collect: $(foreach f, $(CONFIGS), collect-$(f) )
