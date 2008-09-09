@@ -5,6 +5,7 @@ CONFIGS = \
 		  conkyrc \
 		  xmonad.hs \
 		  xinitrc \
+		  Xmodmap \
 		  Xresources \
 		  vimperatorrc
 

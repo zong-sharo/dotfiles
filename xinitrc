@@ -9,6 +9,7 @@ conky
 if [[ $(hostname) == "ep" ]]
 then
     XRDB_FLAGS="-DCMUTT"
+    xmodmap .Xmodmap
 fi
 
 xrdb $XRDB_FLAGS .Xresources
