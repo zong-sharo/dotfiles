@@ -136,6 +136,12 @@ if [[ -d ~/local ]];then
         if [[ -d "${prefix}/bin" ]]; then
             path=($path "$prefix/bin")
         fi
+        if [[ -d "${prefix}/lib" ]]; then
+            export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$prefix/lib"
+        fi
+        if [[ -d "${prefix}/share/man" ]]; then
+            export MANPATH="$MANPATH:$prefix/share/man"
+        fi
     done
 fi
 
