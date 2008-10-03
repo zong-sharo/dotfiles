@@ -1,3 +1,6 @@
+module Main where
+
+
 import XMonad
 import System.Exit
 
@@ -105,6 +108,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     -- snapshot
     , ((modMask,               xK_F12   ), spawn "DISPLAY=$DISPLAY filename=$(snap) && notify-send 'snap' \"saved to $filename\" -t 3000")
+
+    -- slock
+    , ((mod1Mask .|. controlMask, xK_Delete ), spawn "slock")
 
     -- close focused window 
     , ((modMask .|. shiftMask, xK_c     ), kill)
