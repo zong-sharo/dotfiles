@@ -20,7 +20,7 @@ install-%: %
 	$(INSTALL) $* $(HOME)/.$* 
 
 collect-%:
-	cp $(HOME)/.$* $*
+	- cp $(HOME)/.$* $*
 
 install-xmonad.hs: xmonad.hs
 	$(INSTALL) $< $(HOME)/.xmonad/$<
