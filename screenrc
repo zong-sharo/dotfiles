@@ -4,3 +4,4 @@ autodetach on
 startup_message off
 vbell off
 silencewait 15
+defscrollback 5000
