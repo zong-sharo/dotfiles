@@ -9,7 +9,7 @@ import qualified Data.Map        as M
 import XMonad.Prompt
 import XMonad.Prompt.Shell
 import XMonad.Actions.WindowGo
-import XMonad.Layout.LayoutHints
+import XMonad.Layout.LayoutHints (layoutHints)
 
 
 -- The preferred terminal program, which is used in a binding below and by
@@ -161,9 +161,10 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask              , xK_period), sendMessage (IncMasterN (-1)))
 
     -- toggle the status bar gap
-    , ((modMask              , xK_b     ),
-          modifyGap (\i n -> let x = (XMonad.defaultGaps conf ++ repeat (0,0,0,0)) !! i
-                             in if n == x then (0,0,0,0) else x))
+    -- broken since 0.8
+--    , ((modMask              , xK_b     ),
+--          modifyGap (\i n -> let x = (XMonad.defaultGaps conf ++ repeat (0,0,0,0)) !! i
+--                             in if n == x then (0,0,0,0) else x))
 
     -- Quit xmonad
     , ((modMask .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
@@ -219,9 +220,9 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
---myLayout = tiled ||| Mirror tiled ||| Full
-myLayout = layoutHints Full ||| layoutHints tiled
-  where
+--myLayout = simpleTabBar . layoutHints $ Full ||| tiled
+myLayout = layoutHints $ Full ||| tiled
+     where
      -- tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
 
@@ -309,7 +310,8 @@ defaults = defaultConfig {
         workspaces         = myWorkspaces,
         normalBorderColor  = myNormalBorderColor,
         focusedBorderColor = myFocusedBorderColor,
-        defaultGaps        = myDefaultGaps,
+      -- broken since 0.8
+--        defaultGaps        = myDefaultGaps,
 
       -- key bindings
         keys               = myKeys,
