@@ -107,8 +107,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_p     ), shellPrompt promptConfig)
 
     -- snapshot
-    , ((modMask,               xK_F12   ), spawn "DISPLAY=$DISPLAY filename=$(snap) &&" ++
-                                                 "notify-send 'snap' \"saved to <a href=\\\"file://$(pwd)/$filename\\\">$filename</a>\" -t 3000")
+    , ((modMask,               xK_F12   ), spawn $ "DISPLAY=$DISPLAY filename=$(snap) &&" ++
+                                                   "notify-send 'snap' \"saved to <a href=\\\"file://$(pwd)/$filename\\\">$filename</a>\" -t 3000")
 
     -- slock
     , ((mod1Mask .|. controlMask, xK_Delete ), spawn "slock")
