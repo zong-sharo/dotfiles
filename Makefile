@@ -61,6 +61,7 @@ collect: $(foreach f, $(CONFIGS), collect-$(f) )
 #makepath-%:
 #	if [[ ! -d $(HOME)/$* ]]; then mkdir -p $(HOME)/$*; fi
 
-.PHONY:paths
-paths:
-	$(foreach p, $(PATHS), if [[ ! -d $(HOME)/$p ]]; then mkdir -p $(HOME)/$p; fi;)
+paths: $(foreach p, $(PATHS), $(HOME)/$p)
+
+$(HOME)/%/:
+	mkdir -p $@
