@@ -1,4 +1,4 @@
-#ifdef CMUTT
+#ifdef USE_CMU_TYPEWRITER
 Rxvt*font:xft:CMU Typewriter Text:size=13
 Rxvt*boldFont:xft:CMU Typewriter Text:bold:size=13
 Rxvt*italicFont:xft:CMU Typewriter Text:italic:size=13
