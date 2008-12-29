@@ -59,6 +59,7 @@ alias mysql='mysql -p'
 alias skipc="grep '^#|^\s*$' -v"
 alias ocaml='ledit ocaml'
 alias fumount='fusermount -u'
+alias playrbc='mplayer -vf crop=384:238:0:0,pp=tn:50,pp=ac'
 
 # === paludis ===
 alias paludis='paludis --log-level warning'
