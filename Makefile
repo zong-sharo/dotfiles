@@ -58,9 +58,6 @@ install: paths $(foreach f, $(CONFIGS), install-$(f) )
 
 collect: $(foreach f, $(CONFIGS), collect-$(f) )
 
-#makepath-%:
-#	if [[ ! -d $(HOME)/$* ]]; then mkdir -p $(HOME)/$*; fi
-
 paths: $(foreach p, $(PATHS), $(HOME)/$p)
 
 $(HOME)/%/:
