@@ -1,0 +1,5 @@
+#!/bin/sh
+timespec=$1
+timeout=0
+shift
+echo "DISPLAY=$DISPLAY notify-send -i gtk-info -t $timeout 'Reminder' '$*'" | at $timespec

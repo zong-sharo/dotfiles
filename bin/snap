@@ -1,0 +1,4 @@
+#!/bin/sh
+format='snap-%Y.%m.%d-%H:%M:%S.png'
+filename=${1:-$format}
+scrot $filename --exec 'echo $n'
