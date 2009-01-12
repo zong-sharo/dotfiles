@@ -17,8 +17,7 @@ set statusline=%1*\ \|%n\|\
 \ %=%{stline#Tabinfo()}%5l/%L,%-5v%2*%3P
 
 " == Behavior ==
-set foldenable
-set foldmethod=marker
+set nofoldenable
 set wildmenu
 set linebreak
 "set textwidth=70
