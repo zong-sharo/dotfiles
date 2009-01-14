@@ -16,6 +16,7 @@ CONFIGS = \
 PATHS = \
 		.vimbackup \
 		.vimswp
+BINS=$(notdir $(wildcard ./bin/*))
 
 PREFIX=$(HOME)
 COLLECT_DEST=.
@@ -36,7 +37,7 @@ all : $(CONFIGS)
 
 install: paths $(foreach f, $(CONFIGS), install-$(f) ) install-bin
 
-collect: $(foreach f, $(CONFIGS), collect-$(f) ) collect-bin $(COLLECT_DEST)
+collect: $(COLLECT_DEST) $(foreach f, $(CONFIGS), collect-$(f) ) collect-bin $(COLLECT_DEST)
 
 install-%: %
 	install -D --backup=$(BACKUP) --mode=$(if $(INSTALL.MODE.$*),$(INSTALL.MODE.$*),$(INSTALL.MODE)) $* $(if $(INSTALL.PATH.$*), $(INSTALL.PATH.$*)/$*, $(INSTALL.PATH)/.$*)
@@ -47,8 +48,8 @@ collect-%:
 install-bin: bin/* $(PREFIX)/bin
 	install --backup=$(BACKUP) --mode=755 bin/* $(PREFIX)/bin/
 
-collect-bin:
-	- cp $(PREFIX)/bin/* $(COLLECT_DEST)/bin
+collect-bin: $(COLLECT_DEST)/bin
+	- cp $(addprefix $(PREFIX)/bin/,$(BINS)) $(COLLECT_DEST)/bin
 
 paths: $(foreach p, $(PATHS), $(PREFIX)/$p)
 
