@@ -129,22 +129,20 @@ export PATH="$HOME/bin:$HOME/local/bin:$PATH"
 export MPD_HOST="127.0.0.1"
 export GREP_COLOR="0;37;43" # red
 
+# == Local installs ==
 if [[ -d ~/local ]];then
-    for prefix in ~/local/* ; do
-        if [[ -d "${prefix}/lib/python2.5" ]]; then
-            export PYTHONPATH="$PYTHONPATH:$prefix/lib/python2.5/site-packages"
-        fi
-        if [[ -d "${prefix}/bin" ]]; then
-            path=($path "$prefix/bin")
-        fi
-        if [[ -d "${prefix}/lib" ]]; then
-            export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$prefix/lib"
-        fi
-        if [[ -d "${prefix}/share/man" ]]; then
-            export MANPATH="$MANPATH:$prefix/share/man"
-        fi
-    done
+
+    if $( which python &> /dev/null ); then
+        python_version=$(python -V 2>& 1| cut -c8-10)
+
+        export PYTHONPATH="${PYTHONPATH}$(find ~/local -path "*/lib*/python${python_version}/site-packages" -type d -printf ':%p')"
+    fi
+
+    export PATH="${PATH}$(find ~/local -maxdepth 3 -regex '.*/bin\(32\|64\)?' -type d -printf ':%p')"
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}$(find ~/local -maxdepth 3 -regex '.*/lib\(32\|64\)?' -type d -printf ':%p')"
+    export MANPATH="${MANPATH}$( find ~/local -maxdepth 3 -path '*/share/man' -type d -printf ':%p')"
 fi
+
 
 MAILCHECK=300
 
