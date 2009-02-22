@@ -258,7 +258,6 @@ myManageHook = composeAll
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "Opera"          --> doF (W.shift "web")
     , className =? "Firefox"        --> doF (W.shift "web")
-    , className =? "Liferea"        --> doF (W.shift "3")
     ]
 
 -- Whether focus follows the mouse pointer.
