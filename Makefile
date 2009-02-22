@@ -11,12 +11,14 @@ CONFIGS = \
 		  vimrc \
 		  gvimrc \
 		  stline.vim \
-		  zenburn.vim
+		  zenburn.vim \
+		  config.fish
 
 PATHS = \
 		.vimbackup \
 		.vimswp
 BINS=$(notdir $(wildcard ./bin/*))
+FISH_FUNCTIONS=$(notdir $(wildcard ./fish-functions/*))
 
 PREFIX=$(HOME)
 COLLECT_DEST=.
@@ -25,6 +27,7 @@ INSTALL.PATH=$(PREFIX)
 INSTALL.PATH.xmonad.hs=$(PREFIX)/.xmonad
 INSTALL.PATH.stline.vim=$(PREFIX)/.vim/autoload
 INSTALL.PATH.zenburn.vim=$(PREFIX)/.vim/colors
+INSTALL.PATH.config.fish=$(PREFIX)/.config/fish
 
 BACKUP=numbered
 INSTALL.MODE=644
@@ -44,6 +47,12 @@ install-%: %
 
 collect-%:
 	- cp $(if $(INSTALL.PATH.$*), $(INSTALL.PATH.$*)/$*, $(INSTALL.PATH)/.$*) $(COLLECT_DEST)/$*
+
+install-fish-functions: $(PREFIX)/.config/fish/functions
+	install --backup=$(BACKUP) ./fish-functions/* $(PREFIX)/.config/fish-functions
+
+collect-fish-functions: $(COLLECT_DEST)/fish-functions
+	- cp $(addprefix $(PREFIX)/.config/fish-functions/, $(FISH_FUNCTIONS)) $(COLLECT_DEST)/fish-functions
 
 install-bin: bin/* $(PREFIX)/bin
 	install --backup=$(BACKUP) -m 755 bin/* $(PREFIX)/bin/
