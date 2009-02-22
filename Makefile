@@ -38,9 +38,9 @@ INSTALL.MODE.reminder=755
 
 all : $(CONFIGS)
 
-install: paths $(foreach f, $(CONFIGS), install-$(f) ) install-bin
+install: paths $(foreach f, $(CONFIGS), install-$(f) ) install-bin install-fish-functions
 
-collect: $(COLLECT_DEST) $(foreach f, $(CONFIGS), collect-$(f) ) collect-bin $(COLLECT_DEST)
+collect: $(COLLECT_DEST) $(foreach f, $(CONFIGS), collect-$(f) ) collect-bin collect-fish-functions $(COLLECT_DEST)
 
 install-%: %
 	install -D --backup=$(BACKUP) -m $(if $(INSTALL.MODE.$*),$(INSTALL.MODE.$*),$(INSTALL.MODE)) $* $(if $(INSTALL.PATH.$*), $(INSTALL.PATH.$*)/$*, $(INSTALL.PATH)/.$*)
@@ -49,10 +49,10 @@ collect-%:
 	- cp $(if $(INSTALL.PATH.$*), $(INSTALL.PATH.$*)/$*, $(INSTALL.PATH)/.$*) $(COLLECT_DEST)/$*
 
 install-fish-functions: $(PREFIX)/.config/fish/functions
-	install --backup=$(BACKUP) ./fish-functions/* $(PREFIX)/.config/fish-functions
+	install --backup=$(BACKUP) ./fish-functions/* $(PREFIX)/.config/fish/functions
 
 collect-fish-functions: $(COLLECT_DEST)/fish-functions
-	- cp $(addprefix $(PREFIX)/.config/fish-functions/, $(FISH_FUNCTIONS)) $(COLLECT_DEST)/fish-functions
+	- cp $(addprefix $(PREFIX)/.config/fish/functions/, $(FISH_FUNCTIONS)) $(COLLECT_DEST)/fish-functions
 
 install-bin: bin/* $(PREFIX)/bin
 	install --backup=$(BACKUP) -m 755 bin/* $(PREFIX)/bin/
