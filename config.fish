@@ -39,5 +39,4 @@ end
 # missing features:
 # * rprompt
 # * jobs argv
-# * zsh-like alias -g
 # * zsh-like completion print

@@ -1,3 +1,3 @@
 function skipc --description "Drop commented lines"
-    command egrep '^#|^\s*$' -v $argv
+    command egrep '^[[:space:]]*(#|$)' -v $argv
 end
