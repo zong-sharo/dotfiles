@@ -254,6 +254,7 @@ myLayout = layoutHints $ Full ||| tiled
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
+    , className =? "Wine"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore
     , className =? "Opera"          --> doF (W.shift "web")
