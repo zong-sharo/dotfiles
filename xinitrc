@@ -1,4 +1,9 @@
 #!/bin/bash
+if [[ ! `pgrep urxvtd -u $USER` ]]
+then
+	urxvtd &
+fi
+
 xmonad & wmpid=$!
 
 xsetroot -solid 'black'
@@ -13,10 +18,5 @@ then
 fi
 
 xrdb $XRDB_FLAGS .Xresources
-
-if [[ ! `pgrep urxvtd -u $USER` ]]
-then
-	urxvtd &
-fi
 
 wait $wmpid
