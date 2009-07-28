@@ -2,6 +2,7 @@ set -gx GREP_OPTIONS --color=auto
 set -gx GREP_COLOR '0;37;43' # red bg
 set -gx LESS '-cx4MiR' # clear screen, tabstop=4, long prompt, smart ignorecase, accept colors
 set -gx EDITOR vim
+set -gx CDPATH '.'
 
 set PATH ~/bin $PATH
 
