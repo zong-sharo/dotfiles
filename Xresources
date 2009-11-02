@@ -1,7 +1,7 @@
 #ifdef USE_CMU_TYPEWRITER
-Rxvt*font:xft:CMU Typewriter Text:size=13
-Rxvt*boldFont:xft:CMU Typewriter Text:bold:size=13
-Rxvt*italicFont:xft:CMU Typewriter Text:italic:size=13
+Rxvt*font:xft:CMU Typewriter Text:light:autohint=True:size=13
+Rxvt*boldFont:xft:CMU Typewriter Text:bold:autohint=True:size=13
+Rxvt*italicFont:xft:CMU Typewriter Text:italic:autohint=True:size=13
 #else
 Rxvt*font:xft:Liberation Mono:size=11
 Rxvt*boldFont:xft:Liberation Mono:bold:size=11
