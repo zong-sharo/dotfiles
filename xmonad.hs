@@ -8,6 +8,7 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 import XMonad.Prompt
 import XMonad.Prompt.Shell
+import XMonad.Prompt.Window
 import XMonad.Actions.WindowGo
 import XMonad.Layout.LayoutHints (layoutHints)
 
@@ -105,6 +106,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 --    , ((modMask,               xK_p     ), spawn "exe=$(dmenu_path | dmenu) && eval \"exec $exe\"")
     -- shell prompt
     , ((modMask,               xK_p     ), shellPrompt promptConfig)
+
+    -- window search
+    , ((modMask,               xK_slash ), windowPromptGoto promptConfig)
 
     -- snapshot
     , ((modMask,               xK_F12   ), spawn $ "DISPLAY=$DISPLAY filename=$(snap) &&" ++
