@@ -31,7 +31,7 @@ function fish_title
     echo $fish_title_string
 end
 
-if test $TERM = 'screen'
+if test $TERM = 'screen' -a -z "$TMUX"
     function screen_title --on-variable fish_title_string # damn hack
         printf '\033k%s\033\\' $fish_title_string
     end

@@ -1,6 +1,7 @@
 CONFIGS = \
 		  zshrc \
 		  screenrc \
+		  tmux.conf \
 		  toprc \
 		  conkyrc \
 		  xmonad.hs \
