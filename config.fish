@@ -28,7 +28,7 @@ function fish_title
     end
         
     set -gx fish_title_string ( printf '%s@%s:%s %s' (whoami) (hostname|cut -d . -f 1) (pwd) $job )
-    echo $fish_title_hook_variable
+    echo $fish_title_string
 end
 
 if test $TERM = 'screen'
