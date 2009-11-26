@@ -48,7 +48,7 @@ collect-%:
 	- cp $(if $(INSTALL.PATH.$*), $(INSTALL.PATH.$*)/$*, $(INSTALL.PATH)/.$*) $(COLLECT_DEST)/$*
 
 install-fish-functions: $(PREFIX)/.config/fish/functions
-	install --backup=$(BACKUP) ./fish-functions/* $(PREFIX)/.config/fish/functions
+	install --backup=$(BACKUP) -m $(INSTALL.MODE) ./fish-functions/* $(PREFIX)/.config/fish/functions
 
 collect-fish-functions: $(COLLECT_DEST)/fish-functions
 	- cp $(addprefix $(PREFIX)/.config/fish/functions/, $(FISH_FUNCTIONS)) $(COLLECT_DEST)/fish-functions
