@@ -65,3 +65,4 @@ let Grep_Default_Options = '-i'
 
 " == Vimwiki ==
 let g:vimwiki_home="~/vimwiki/"
+autocmd BufEnter *.wiki set shiftwidth=1
