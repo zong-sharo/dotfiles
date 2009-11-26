@@ -33,8 +33,6 @@ INSTALL.PATH.config.fish=$(PREFIX)/.config/fish
 BACKUP=numbered
 INSTALL.MODE=644
 INSTALL.MODE.xinitrc=755
-INSTALL.MODE.snap=755
-INSTALL.MODE.reminder=755
 
 
 all : $(CONFIGS)
