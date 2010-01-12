@@ -93,8 +93,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_f     ), runOrRaise "firefox" (className =? "Firefox"))
 
     -- volume
-    , ((modMask,               xK_Up    ), spawn "aumix -v +5")
-    , ((modMask,               xK_Down  ), spawn "aumix -v -5")
+    , ((modMask,               xK_Up    ), spawn "amixer set Master 5%+ -q")
+    , ((modMask,               xK_Down  ), spawn "amixer set Master 5%- -q")
     -- mpd seek
     , ((modMask,               xK_Left  ), spawn "mpc seek +5%")
     , ((modMask,               xK_Right ), spawn "mpc seek -5%")
