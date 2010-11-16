@@ -11,6 +11,7 @@ import XMonad.Prompt
 import XMonad.Prompt.Shell
 import XMonad.Prompt.Window
 import XMonad.Actions.WindowGo
+import XMonad.Hooks.ManageHelpers
 import XMonad.Layout.LayoutHints (layoutHints)
 import XMonad.Layout.NoBorders
 import XMonad.Util.Run (safeSpawn, unsafeSpawn)
@@ -90,10 +91,9 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
     [
     -- launch hotkeys
-      ((modMask,               xK_c     ), runOrRaise "urxvtc"  (className =? "URxvt"))
-    , ((modMask,               xK_e     ), runOrRaise "gvim"    (className =? "Gvim"))
-    , ((modMask,               xK_o     ), runOrRaise "opera"   (className =? "Opera"))
-    , ((modMask,               xK_f     ), runOrRaise "firefox" (className =? "Firefox"))
+      ((modMask,               xK_c     ), runOrRaiseNext "urxvtc"  (className =? "URxvt"))
+    , ((modMask,               xK_e     ), runOrRaiseNext "gvim"    (className =? "Gvim"))
+    , ((modMask,               xK_f     ), runOrRaiseNext "firefox" (className =? "Firefox"))
 
     -- volume
     , ((modMask,               xK_Up    ), safeSpawn "amixer" ["set", "Master", "5%+", "-q"])
