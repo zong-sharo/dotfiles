@@ -6,7 +6,7 @@ CONFIGS = \
 		  conkyrc \
 		  xmonad.hs \
 		  xinitrc \
-		  Xmodmap \
+		  $(wildcard Xmodmap*) \
 		  Xresources \
 		  vimperatorrc \
 		  vimrc \
