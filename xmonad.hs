@@ -12,6 +12,7 @@ import XMonad.Prompt.Shell
 import XMonad.Prompt.Window
 import XMonad.Actions.WindowGo
 import XMonad.Layout.LayoutHints (layoutHints)
+import XMonad.Layout.NoBorders
 import XMonad.Util.Run (safeSpawn, unsafeSpawn)
 
 
@@ -226,7 +227,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- which denotes layout choice.
 --
 --myLayout = simpleTabBar . layoutHints $ Full ||| tiled
-myLayout = layoutHints $ Full ||| tiled
+myLayout = smartBorders $ layoutHints $ Full ||| tiled
      where
      -- tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
