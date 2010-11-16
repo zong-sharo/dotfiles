@@ -2,3 +2,11 @@ set focuscontent
 set hlsearch
 
 set guioptions=bn
+set complete+=t
+set urlseparator=''
+set showstatuslinks=2
+set newtab=all
+
+"kills ff's ^n shortcut
+cmap <C-n> <Nop>
+imap <C-n> <Nop>
