@@ -6,11 +6,13 @@ import System.Exit
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
+
 import XMonad.Prompt
 import XMonad.Prompt.Shell
 import XMonad.Prompt.Window
 import XMonad.Actions.WindowGo
 import XMonad.Layout.LayoutHints (layoutHints)
+import XMonad.Util.Run (safeSpawn, unsafeSpawn)
 
 
 -- The preferred terminal program, which is used in a binding below and by
@@ -93,17 +95,15 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_f     ), runOrRaise "firefox" (className =? "Firefox"))
 
     -- volume
-    , ((modMask,               xK_Up    ), spawn "amixer set Master 5%+ -q")
-    , ((modMask,               xK_Down  ), spawn "amixer set Master 5%- -q")
+    , ((modMask,               xK_Up    ), safeSpawn "amixer" ["set", "Master", "5%+", "-q"])
+    , ((modMask,               xK_Down  ), safeSpawn "amixer" ["set", "Master", "5%-", "-q"])
     -- mpd seek
-    , ((modMask,               xK_Left  ), spawn "mpc seek +5%")
-    , ((modMask,               xK_Right ), spawn "mpc seek -5%")
+    , ((modMask,               xK_Left  ), safeSpawn "mpc" ["seek", "+5%"])
+    , ((modMask,               xK_Right ), safeSpawn "mpc" ["seek", "-5%"])
     -- mpd prev/next
-    , ((modMask,               xK_bracketleft ), spawn "mpc prev")
-    , ((modMask,               xK_bracketright), spawn "mpc next")
+    , ((modMask,               xK_bracketleft ), safeSpawn "mpc" ["prev"])
+    , ((modMask,               xK_bracketright), safeSpawn "mpc" ["next"])
 
-    -- launch dmenu
---    , ((modMask,               xK_p     ), spawn "exe=$(dmenu_path | dmenu) && eval \"exec $exe\"")
     -- shell prompt
     , ((modMask,               xK_p     ), shellPrompt promptConfig)
 
@@ -111,11 +111,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_slash ), windowPromptGoto promptConfig)
 
     -- snapshot
-    , ((modMask,               xK_F12   ), spawn $ "DISPLAY=$DISPLAY filename=$(snap) &&" ++
+    , ((modMask,               xK_F12   ), unsafeSpawn $ "DISPLAY=$DISPLAY filename=$(snap) &&" ++
                                                    "notify-send 'snap' \"saved to <a href=\\\"file://$(pwd)/$filename\\\">$filename</a>\" -t 3000")
 
     -- slock
-    , ((mod1Mask .|. controlMask, xK_Delete ), spawn "slock")
+    , ((mod1Mask .|. controlMask, xK_Delete ), safeSpawn "slock" [])
 
     -- close focused window 
     , ((modMask .|. shiftMask, xK_c     ), kill)
