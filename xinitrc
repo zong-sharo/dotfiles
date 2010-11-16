@@ -1,30 +1,37 @@
 #!/bin/bash
-if [[ ! `pgrep urxvtd -u $USER` ]]
+# = Urxvtd =
+[[ -z `pgrep urxvtd -u $USER` ]] && urxvtd &
+
+# = Input =
+setxkbmap -model evdev -layout 'us,ru(winkeys)'
+
+# = Layout acyclic switch =
+xmodmap .Xmodmap
+
+# = Host-specific font and keyboard fixes =
+if [[ $(hostname) == "silver" ]]
 then
-	urxvtd &
+    XRDB_FLAGS="-DUSE_CMU_TYPEWRITER"
+    xmodmap .Xmodmap.apple_keyboard.A1243.fix
 fi
 
+# = Urxvt settings  =
+xrdb -merge $XRDB_FLAGS .Xresources
+
+# = Xmonad =
 xmonad & wmpid=$!
 
+# = Background =
 if (which xcompmgr &> /dev/null)
 then
     xcompmgr &
-    if (which hsetroot &> /dev/null)
-    then hsetroot -solid 'black'
-    fi
+    which hsetroot &> /dev/null && hsetroot -solid '#000000'
 else
     xsetroot -solid 'black'
 fi
-#us, ru_winkeys, switch by caps, scroll led
-setxkbmap -symbols 'pc+us+ru(winkeys):2+group(caps_toggle)' -compat 'complete+ledscroll(group_lock)'
 
-conky &> /dev/null
-if [[ $(hostname) != "vostro" ]]
-then
-    XRDB_FLAGS="-DUSE_CMU_TYPEWRITER"
-    xmodmap .Xmodmap
-fi
+which conky &> /dev/null && conky &> /dev/null &
 
-xrdb $XRDB_FLAGS .Xresources
+which unclutter &> /dev/null && unclutter -idle 5 -root &
 
 wait $wmpid
