@@ -257,12 +257,10 @@ myLayout = layoutHints $ Full ||| tiled
 --
 myManageHook = composeAll
     [ className =? "MPlayer"        --> doFloat
-    , className =? "Gimp"           --> doFloat
     , className =? "Wine"           --> doFloat
-    , resource  =? "desktop_window" --> doIgnore
-    , resource  =? "kdesktop"       --> doIgnore
     , className =? "Opera"          --> doF (W.shift "web")
     , className =? "Firefox"        --> doF (W.shift "web")
+    , isFullscreen                  --> doFullFloat -- cos of flash fullscreen video
     ]
 
 -- Whether focus follows the mouse pointer.
