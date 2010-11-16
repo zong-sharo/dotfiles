@@ -1,8 +1,4 @@
-! F13 as insert
-keycode 182 = Insert
-! cmd button as Super
-keycode 115 = Super_L
-add mod4 = Super_L
-
-! tilda fix
-keycode 94 = grave asciitilde Cyrillic_io Cyrillic_IO
+! layout acyclic switch
+keycode 66 = ISO_First_Group
+! keycode 109 = ISO_Last_Group
+keycode 113 = ISO_Last_Group
