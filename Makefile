@@ -1,5 +1,4 @@
 CONFIGS = \
-		  zshrc \
 		  screenrc \
 		  tmux.conf \
 		  toprc \
