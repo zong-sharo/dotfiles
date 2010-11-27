@@ -227,7 +227,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- which denotes layout choice.
 --
 --myLayout = simpleTabBar . layoutHints $ Full ||| tiled
-myLayout = smartBorders $ layoutHints $ Full ||| Mirror tiled
+myLayout = layoutHints $ smartBorders $ Full ||| Mirror tiled
      where
      -- tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
