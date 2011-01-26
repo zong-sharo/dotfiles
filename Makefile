@@ -8,6 +8,7 @@ CONFIGS = \
 		  $(wildcard Xmodmap*) \
 		  Xresources \
 		  vimperatorrc \
+		  pentadactylrc \
 		  vimrc \
 		  gvimrc \
 		  stline.vim \
@@ -19,6 +20,7 @@ PATHS = \
 		.vimswp
 BINS=$(notdir $(wildcard ./bin/*))
 FISH_FUNCTIONS=$(notdir $(wildcard ./fish-functions/*))
+PENTADACTYL_PLUGINS=$(notdir $(wildcard ./pentadactyl-plugins/*))
 
 PREFIX=$(HOME)
 COLLECT_DEST=.
@@ -36,9 +38,9 @@ INSTALL.MODE.xinitrc=755
 
 all : $(CONFIGS)
 
-install: paths $(foreach f, $(CONFIGS), install-$(f) ) install-bin install-fish-functions
+install: paths $(foreach f, $(CONFIGS), install-$(f) ) install-bin install-fish-functions install-pentadactyl-plugins
 
-collect: $(COLLECT_DEST) $(foreach f, $(CONFIGS), collect-$(f) ) collect-bin collect-fish-functions $(COLLECT_DEST)
+collect: $(COLLECT_DEST) $(foreach f, $(CONFIGS), collect-$(f) ) collect-bin collect-fish-functions collect-pentadactyl-plugins $(COLLECT_DEST)
 
 install-%: %
 	install -D --backup=$(BACKUP) -m $(if $(INSTALL.MODE.$*),$(INSTALL.MODE.$*),$(INSTALL.MODE)) $* $(if $(INSTALL.PATH.$*), $(INSTALL.PATH.$*)/$*, $(INSTALL.PATH)/.$*)
@@ -51,6 +53,12 @@ install-fish-functions: $(PREFIX)/.config/fish/functions
 
 collect-fish-functions: $(COLLECT_DEST)/fish-functions
 	- cp $(addprefix $(PREFIX)/.config/fish/functions/, $(FISH_FUNCTIONS)) $(COLLECT_DEST)/fish-functions
+
+install-pentadactyl-plugins: $(PREFIX)/.pentadactyl/plugins
+	install --backup=$(BACKUP) -m $(INSTALL.MODE) ./pentadactyl-plugins/* $(PREFIX)/.pentadactyl/plugins
+
+collect-pentadactyl-plugins: $(COLLECT_DEST)/pentadactyl-plugins
+	- cp $(addprefix $(PREFIX)/.pentadactyl/plugins/, $(PENTADACTYL_PLUGINS)) $(COLLECT_DEST)/pentadactyl-plugins
 
 install-bin: bin/* $(PREFIX)/bin
 	install --backup=$(BACKUP) -m 755 bin/* $(PREFIX)/bin/

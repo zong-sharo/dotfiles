@@ -1,0 +1,12 @@
+set hlfind
+
+set guioptions=bnCsc
+map <Leader>r :readability<CR>
+set complete=sSlft
+set urlseparator=''
+set showstatuslinks=command
+set newtab=all
+
+"kills ff's ^n shortcut
+cmap <C-n> <Nop>
+imap <C-n> <Nop>
