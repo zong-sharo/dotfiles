@@ -1,4 +1,4 @@
-CONFIGS = \
+CONFIGS := \
 		  screenrc \
 		  tmux.conf \
 		  toprc \
@@ -15,32 +15,40 @@ CONFIGS = \
 		  zenburn.vim \
 		  config.fish
 
-PATHS = \
+DIRS := \
 		.vimbackup \
 		.vimswp
-BINS=$(notdir $(wildcard ./bin/*))
-FISH_FUNCTIONS=$(notdir $(wildcard ./fish-functions/*))
-PENTADACTYL_PLUGINS=$(notdir $(wildcard ./pentadactyl-plugins/*))
+PREFIX := $(HOME)
+COLLECT_DEST := .
 
-PREFIX=$(HOME)
-COLLECT_DEST=.
+INSTALL.PATH := $(PREFIX)
+INSTALL.PATH.xmonad.hs := $(PREFIX)/.xmonad
+INSTALL.PATH.stline.vim := $(PREFIX)/.vim/autoload
+INSTALL.PATH.zenburn.vim := $(PREFIX)/.vim/colors
+INSTALL.PATH.config.fish := $(PREFIX)/.config/fish
 
-INSTALL.PATH=$(PREFIX)
-INSTALL.PATH.xmonad.hs=$(PREFIX)/.xmonad
-INSTALL.PATH.stline.vim=$(PREFIX)/.vim/autoload
-INSTALL.PATH.zenburn.vim=$(PREFIX)/.vim/colors
-INSTALL.PATH.config.fish=$(PREFIX)/.config/fish
+BACKUP := numbered
+INSTALL.MODE := 644
+INSTALL.MODE.xinitrc := 755
 
-BACKUP=numbered
-INSTALL.MODE=644
-INSTALL.MODE.xinitrc=755
+SUBPATHS := FISH_FUNCTIONS PENTADACTYL_PLUGINS BIN_FILES
+FISH_FUNCTIONS := fish-functions .config/fish/functions
+PENTADACTYL_PLUGINS := pentadactyl-plugins .pentadactyl/plugins
+BIN_FILES := bin bin
 
+help :
+	@ echo "interesting targets: collect and install"
+	@ echo "variables:"
+	@ echo "	PREFIX          - installation prefix, default is \$$HOME"
+	@ echo "	COLLECT_DESTDIR - directory where to collect, default is current directory"
+	@ echo " 	BACKUP          - backup strategy, default is numbered. for additional info see man 1 install"
+	@ echo "	INSTALL.MODE    - permissions of installed files, default is 644, unless overrided on per-file basis"
 
-all : $(CONFIGS)
+all : help
 
-install: paths $(foreach f, $(CONFIGS), install-$(f) ) install-bin install-fish-functions install-pentadactyl-plugins
+install: dirs $(foreach f, $(CONFIGS), install-$(f) ) $(foreach subpath_mapping_var, $(SUBPATHS), subpaths-install-$(subpath_mapping_var))
 
-collect: $(COLLECT_DEST) $(foreach f, $(CONFIGS), collect-$(f) ) collect-bin collect-fish-functions collect-pentadactyl-plugins $(COLLECT_DEST)
+collect: $(COLLECT_DEST) $(foreach f, $(CONFIGS), collect-$(f) ) $(foreach subpath_mapping_var, $(SUBPATHS), subpaths-collect-$(subpath_mapping_var))
 
 install-%: %
 	install -D --backup=$(BACKUP) -m $(if $(INSTALL.MODE.$*),$(INSTALL.MODE.$*),$(INSTALL.MODE)) $* $(if $(INSTALL.PATH.$*), $(INSTALL.PATH.$*)/$*, $(INSTALL.PATH)/.$*)
@@ -48,25 +56,30 @@ install-%: %
 collect-%:
 	- cp $(if $(INSTALL.PATH.$*), $(INSTALL.PATH.$*)/$*, $(INSTALL.PATH)/.$*) $(COLLECT_DEST)/$*
 
-install-fish-functions: $(PREFIX)/.config/fish/functions
-	install --backup=$(BACKUP) -m $(INSTALL.MODE) ./fish-functions/* $(PREFIX)/.config/fish/functions
+# subpath helpers
+repodir = $(firstword $($*))
+installdir = $(lastword $($*))
+PREFIX_ := $(addsuffix /, $(PREFIX))
 
-collect-fish-functions: $(COLLECT_DEST)/fish-functions
-	- cp $(addprefix $(PREFIX)/.config/fish/functions/, $(FISH_FUNCTIONS)) $(COLLECT_DEST)/fish-functions
+subpaths-install-%:
+	install -d $(addprefix $(PREFIX_), $(installdir))
+	install --backup=$(BACKUP) -m $(INSTALL.MODE) \
+		$(addprefix ./, $(repodir))/* \
+		$(addprefix $(PREFIX_), $(installdir))
 
-install-pentadactyl-plugins: $(PREFIX)/.pentadactyl/plugins
-	install --backup=$(BACKUP) -m $(INSTALL.MODE) ./pentadactyl-plugins/* $(PREFIX)/.pentadactyl/plugins
+subpaths-collect-%:
+	install -d $(addprefix $(addsuffix /, $(collect_dest)), $(repodir))
+	- cp $(addprefix \
+			$(addprefix $(PREFIX_), $(installdir)/), \
+			$(notdir $(wildcard $(repodir)/*)) \
+		 ) $(addprefix $(addsuffix /, $(collect_dest)), $(repodir))
 
-collect-pentadactyl-plugins: $(COLLECT_DEST)/pentadactyl-plugins
-	- cp $(addprefix $(PREFIX)/.pentadactyl/plugins/, $(PENTADACTYL_PLUGINS)) $(COLLECT_DEST)/pentadactyl-plugins
-
-install-bin: bin/* $(PREFIX)/bin
-	install --backup=$(BACKUP) -m 755 bin/* $(PREFIX)/bin/
-
-collect-bin: $(COLLECT_DEST)/bin
-	- cp $(addprefix $(PREFIX)/bin/,$(BINS)) $(COLLECT_DEST)/bin
-
-paths: $(foreach p, $(PATHS), $(PREFIX)/$p)
+dirs: $(foreach p, $(DIRS), $(PREFIX)/$p)
 
 $(PREFIX)/%/:
 	mkdir -p $@
+
+$(COLLECT_DEST):
+	mkdir -d $(COLLECT_DEST)
+
+.PHONY: help
