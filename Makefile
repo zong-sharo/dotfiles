@@ -7,6 +7,7 @@ CONFIGS := \
 		  xinitrc \
 		  $(wildcard Xmodmap*) \
 		  Xresources \
+		  gtkrc-2.0 \
 		  vimperatorrc \
 		  pentadactylrc \
 		  vimrc \
