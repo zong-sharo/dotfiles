@@ -37,6 +37,8 @@ FISH_FUNCTIONS := fish-functions .config/fish/functions
 PENTADACTYL_PLUGINS := pentadactyl-plugins .pentadactyl/plugins
 BIN_FILES := bin bin
 
+SUBPATHS.INSTALL.MODE.BIN_FILES := 755
+
 help :
 	@ echo "interesting targets: collect and install"
 	@ echo "variables:"
@@ -64,7 +66,7 @@ PREFIX_ := $(addsuffix /, $(PREFIX))
 
 subpaths-install-%:
 	install -d $(addprefix $(PREFIX_), $(installdir))
-	install --backup=$(BACKUP) -m $(INSTALL.MODE) \
+	install --backup=$(BACKUP) -m $(if $(SUBPATHS.INSTALL.MODE.$*), $(SUBPATHS.INSTALL.MODE.$*), $(INSTALL.MODE))) \
 		$(addprefix ./, $(repodir))/* \
 		$(addprefix $(PREFIX_), $(installdir))
 
