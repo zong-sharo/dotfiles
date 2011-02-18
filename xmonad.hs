@@ -115,8 +115,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_F12   ), unsafeSpawn $ "DISPLAY=$DISPLAY filename=$(snap) &&" ++
                                                    "notify-send 'snap' \"saved to <a href=\\\"file://$(pwd)/$filename\\\">$filename</a>\" -t 3000")
 
-    -- slock
-    , ((mod1Mask .|. controlMask, xK_Delete ), safeSpawn "slock" [])
+    -- alock
+    , ((mod1Mask .|. controlMask, xK_Delete ), safeSpawn "alock"  ["-auth", "pam", "-bg", "blank:color=#1f1f1f", "-cursor", "theme:alock"])
 
     -- close focused window 
     , ((modMask .|. shiftMask, xK_c     ), kill)
