@@ -42,10 +42,10 @@ SUBPATHS.INSTALL.MODE.BIN_FILES := 755
 help :
 	@ echo "interesting targets: collect and install"
 	@ echo "variables:"
-	@ echo "	PREFIX          - installation prefix, default is \$$HOME"
-	@ echo "	COLLECT_DESTDIR - directory where to collect, default is current directory"
-	@ echo " 	BACKUP          - backup strategy, default is numbered. for additional info see man 1 install"
-	@ echo "	INSTALL.MODE    - permissions of installed files, default is 644, unless overrided on per-file basis"
+	@ echo "    PREFIX          - installation prefix, default is \$$HOME"
+	@ echo "    COLLECT_DESTDIR - directory where to collect, default is current directory"
+	@ echo "    BACKUP          - backup strategy, default is numbered. for additional info see man 1 install"
+	@ echo "    INSTALL.MODE    - permissions of installed files, default is 644, unless overrided on per-file basis"
 
 all : help
 
