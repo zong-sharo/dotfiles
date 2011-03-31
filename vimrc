@@ -70,11 +70,21 @@ let g:vimwiki_home="~/vimwiki/"
 autocmd BufEnter *.wiki set shiftwidth=1
 
 " == Digraphs ==
+
+" utility command to define digraphs by hex
+function l:d(args)
+    let l:args_ = split(a:args)
+    execute 'dig ' . l:args_[0] . ' ' . eval(l:args_[1])
+endfunction
+
+com -nargs=+ Dig call l:d('<args>')
+
 " show digraphs table
 " TODO: use same buffer every time, open new window if it does not present,
 " otherwise switch to it
 nmap <Leader>d :redir @a<CR>:silent digraphs<CR>:redir END<CR>:new<CR>:put! a<CR>:let @a=@_<CR>
 
+" === superscripts and subscripts ===
 dig S0 8304 " ⁰
 dig S1 185  " ¹
 dig S2 178  " ²
@@ -110,27 +120,30 @@ dig s( 8333 " ₍
 dig s) 8334 " ₎
 dig si 7522 " ᵢ
 
-dig \|= 8871 " ⊧ u022a7 is 'models', and ⊨ u022a8 is 'true', but does not fits in single cell
+" === math symbols ===
+Dig \|= 0x22a7 " ⊧ models
+"⊨ u022a8 is 'true', but u22a8 does not fits in single cell
 " u022ad 'not true'
 abbr ⊧! ⊭ 
 
-dig TO 8868 " ⊤
-dig BO 8869 " ⊥
+Dig TO 0x22A4 " ⊤ top
+Dig BO 0x22A5 " ⊥ bottom
 
-dig [C 8847 " ⊏
-dig [_ 8849 " ⊑
+Dig [C 0x228F " ⊏ square image of
+Dig [_ 0x2291 " ⊑ square image or equal to
 abbr ⊑! ⋢
-dig ]C 8848 " ⊐
-dig _] 8850 " ⊒
+
+Dig ]C 0x2290 " ⊐ square original of
+Dig _] 0x2292 " ⊒ square original or equal to
 abbr ⊒! ⋣
 
-dig [U 8851 " ⊓
-dig ]U 8852 " ⊔
+Dig [U 0x2293 " ⊓ square cap
+Dig ]U 0x2294 " ⊔ square cup
 
-dig \|- 8866 " ⊢
-dig -\| 8867 " ⊣
+Dig \|- 0x22a2 " ⊢ right tack
+Dig -\| 0x22a3 " ⊣ left tack
 
-dig .= 8784 " ≐
+Dig .= 0x2250 " ≐ geomerically equal to
 
 abbr ∈! ∉
 
