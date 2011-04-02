@@ -1,7 +1,6 @@
 set hlfind
 
 set guioptions=bnCsc
-map <Leader>r :readability<CR>
 set complete=sltSf
 set urlseparator=''
 set showstatuslinks=command
@@ -10,3 +9,6 @@ set newtab=all
 "kills ff's ^n shortcut
 cmap <C-n> <Nop>
 imap <C-n> <Nop>
+
+"readability shortcut
+map <Leader>r <C-Z><C-A-R>
