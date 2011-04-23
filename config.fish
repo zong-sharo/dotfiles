@@ -4,7 +4,7 @@ set -gx LESS '-cx4MiR' # clear screen, tabstop=4, long prompt, smart ignorecase,
 set -gx EDITOR vim
 set -gx CDPATH '.'
 
-set PATH ~/bin $PATH
+set PATH ~/bin ~/.cabal/bin $PATH
 
 if test -d ~/local
     
