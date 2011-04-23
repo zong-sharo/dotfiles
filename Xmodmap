@@ -1,4 +1,3 @@
 ! layout acyclic switch
 keycode 66 = ISO_First_Group
-! keycode 109 = ISO_Last_Group
-keycode 113 = ISO_Last_Group
+keycode 108 = ISO_Last_Group

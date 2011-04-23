@@ -1,5 +1,5 @@
 ! F13 as insert
-keycode 182 = Insert
+keycode 191 = Insert
 
 ! cmd button as Super
 keycode 115 = Super_L
@@ -10,6 +10,9 @@ keycode 94 = grave asciitilde Cyrillic_io Cyrillic_IO
 
 ! sugary-tea-hits-keyboard fix
 ! F15 as pg up
-keycode 184 = Prior
+keycode 193 = Prior
 ! F14 as home
-keycode 183 = Home
+keycode 192 = Home
+
+! evdev unfuck
+keycode 115 = End
