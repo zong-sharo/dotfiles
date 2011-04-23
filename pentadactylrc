@@ -1,3 +1,4 @@
+source ~/.pentadactylrc.sensitive
 set hlfind
 
 set guioptions=bnCsc
