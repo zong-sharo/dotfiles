@@ -1,3 +1,5 @@
+source ~/.vimperatorrc.sensitive
+
 set focuscontent
 set hlsearch
 
@@ -10,3 +12,8 @@ set newtab=all
 "kills ff's ^n shortcut
 cmap <C-n> <Nop>
 imap <C-n> <Nop>
+
+"readability default shortcut
+map <Leader>r <C-Z> <C-A-R> <ESC>
+"torbutton
+map <Leader>t <C-Z><C-2><ESC>
