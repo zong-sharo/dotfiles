@@ -66,7 +66,7 @@ PREFIX_ := $(addsuffix /, $(PREFIX))
 
 subpaths-install-%:
 	install -d $(addprefix $(PREFIX_), $(installdir))
-	install --backup=$(BACKUP) -m $(if $(SUBPATHS.INSTALL.MODE.$*), $(SUBPATHS.INSTALL.MODE.$*), $(INSTALL.MODE))) \
+	install --backup=$(BACKUP) -m $(if $(SUBPATHS.INSTALL.MODE.$*), $(SUBPATHS.INSTALL.MODE.$*), $(INSTALL.MODE)) \
 		$(addprefix ./, $(repodir))/* \
 		$(addprefix $(PREFIX_), $(installdir))
 
