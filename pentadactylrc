@@ -12,7 +12,7 @@ cmap <C-n> <Nop>
 imap <C-n> <Nop>
 
 "readability shortcut
-map <Leader>r <C-Z><C-A-R>
+map <Leader>r <C-Z><C-A-R><Esc>
 
 
 set! browser.sessionstore.max_concurrent_tabs=0
