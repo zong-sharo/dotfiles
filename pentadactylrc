@@ -2,7 +2,7 @@ source ~/.pentadactylrc.sensitive
 set hlfind
 
 set guioptions=bnCsc
-set complete=sltSf
+set complete=slSf
 set urlseparator=''
 set showstatuslinks=command
 set newtab=all
@@ -13,3 +13,6 @@ imap <C-n> <Nop>
 
 "readability shortcut
 map <Leader>r <C-Z><C-A-R>
+
+
+set! browser.sessionstore.max_concurrent_tabs=0
