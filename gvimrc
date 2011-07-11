@@ -3,7 +3,8 @@
 set mousehide
 set guioptions=aci "auto-select, console dialogs, vim icon
 "set guifont=CMU\ Typewriter\ Text\ 13
-set guifont=CMU\ Typewriter\ Text\ Ultra-Light\ 13
+"set guifont=CMU\ Typewriter\ Text\ Ultra-Light\ 13
+set guifont=Courier\ New\ 12
 set guicursor=a:blinkon0 "cursor not blink
 
 " == Behavior ==

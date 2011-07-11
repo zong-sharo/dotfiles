@@ -8,15 +8,14 @@ setxkbmap -model evdev -layout 'us,ru(winkeys)'
 # = Layout acyclic switch =
 xmodmap .Xmodmap
 
-# = Host-specific font and keyboard fixes =
+# = keyboard fixes =
 if [[ $(hostname) == "silver" ]]
 then
-    XRDB_FLAGS="-DUSE_CMU_TYPEWRITER"
     xmodmap .Xmodmap.apple_keyboard.A1243.fix
 fi
 
 # = Urxvt settings  =
-xrdb -merge $XRDB_FLAGS .Xresources
+xrdb .Xresources
 
 # = Xmonad =
 xmonad & wmpid=$!
