@@ -13,6 +13,8 @@ imap <C-n> <Nop>
 
 "readability shortcut
 map <Leader>r <C-Z><C-A-R><Esc>
+"torbutton
+map <Leader>t <C-Z><C-2><Esc>
 
 
 set! browser.sessionstore.max_concurrent_tabs=0
