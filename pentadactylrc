@@ -1,7 +1,7 @@
 source ~/.pentadactylrc.sensitive
 set hlfind
 
-set guioptions=bnCsc
+set guioptions=bns
 set complete=slSf
 set urlseparator=''
 set showstatuslinks=command
@@ -18,3 +18,5 @@ map <Leader>t <C-Z><C-2><Esc>
 
 
 set! browser.sessionstore.max_concurrent_tabs=0
+
+hi StatusLineNormal background: #a0a0a0; color black;
