@@ -15,7 +15,9 @@ CONFIGS := \
 		  stline.vim \
 		  zenburn.vim \
 		  config.fish \
-		  zathurarc
+		  zathurarc \
+		  sqliterc
+
 
 DIRS := \
 		.vimbackup \
