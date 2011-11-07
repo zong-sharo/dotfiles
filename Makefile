@@ -14,7 +14,8 @@ CONFIGS := \
 		  gvimrc \
 		  stline.vim \
 		  zenburn.vim \
-		  config.fish
+		  config.fish \
+		  zathurarc
 
 DIRS := \
 		.vimbackup \
@@ -27,6 +28,7 @@ INSTALL.PATH.xmonad.hs := $(PREFIX)/.xmonad
 INSTALL.PATH.stline.vim := $(PREFIX)/.vim/autoload
 INSTALL.PATH.zenburn.vim := $(PREFIX)/.vim/colors
 INSTALL.PATH.config.fish := $(PREFIX)/.config/fish
+INSTALL.PATH.zathurarc := $(PREFIX)/.config/zathura
 
 BACKUP := numbered
 INSTALL.MODE := 644

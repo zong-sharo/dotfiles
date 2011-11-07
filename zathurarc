@@ -1,0 +1,28 @@
+set adjust_open width
+
+set statusbar_bgcolor #8c9c70
+set statusbar_fgcolor black
+
+set inputbar_bgcolor #3f3f3f
+set inputbar_fgcolor #dcdccc
+
+set recolor_darkcolor #dcdccc
+set recolor_lightcolor #3f3f3f
+set default_bgcolor #333333
+# how to change link color?
+set recolor yes
+
+# actually i do like zathura's original more
+# set completion_bgcolor #1e2320
+set completion_fgcolor #acbc90
+
+set font Courier New 12
+
+set n_completion_items 20
+set save_position yes
+set save_zoom_level yes
+
+set show_inputbar false
+
+#TODO: index stuff, default_bgcolor=white on recolor=no
+map I recolor
