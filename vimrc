@@ -29,7 +29,6 @@ set history=1000
 set encoding=utf8
 set fileencodings=utf8
 set mousemodel=extend " mouse behavior like gpm
-set hidden " don't wipe buffer on unload
 set completeopt=menu " no previev
 
 " == Binds  ===
