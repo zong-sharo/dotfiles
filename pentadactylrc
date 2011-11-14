@@ -7,9 +7,10 @@ set urlseparator=''
 set showstatuslinks=command
 set newtab=all
 
-"kills ff's ^n shortcut
+"kill ff's ^n and ^o shortcuts
 cmap <C-n> <Nop>
 imap <C-n> <Nop>
+imap <C-o> <Nop>
 
 "readability shortcut
 map <Leader>r <C-Z><C-A-R><Esc>
