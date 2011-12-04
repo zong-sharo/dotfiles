@@ -12,8 +12,8 @@ cmap <C-n> <Nop>
 imap <C-n> <Nop>
 imap <C-o> <Nop>
 
-"readability shortcut
-map <Leader>r <C-Z><C-A-R><Esc>
+"enjoy reading shortcut
+map <Leader>r :javascript enjoyreading.onToolbarButtonCommand()<CR>
 "torbutton
 map <Leader>t <C-Z><C-2><Esc>
 
