@@ -13,7 +13,7 @@ imap <C-n> <Nop>
 imap <C-o> <Nop>
 
 "enjoy reading shortcut
-map <Leader>r :javascript enjoyreading.onToolbarButtonCommand()<CR>
+map <Leader>r <C-Z><C-A-r><Esc>
 "torbutton
 map <Leader>t <C-Z><C-2><Esc>
 
