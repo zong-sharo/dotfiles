@@ -1,0 +1,59 @@
+source "gpg -d ~/.muttrc.sensitive.gpg|"
+
+# gmail specific
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed ="+[Gmail]/Drafts"
+# set trash = "imaps://imap.gmail.com/[Gmail]/Trash"
+
+set mail_check = 60
+set imap_keepalive = 300
+set timeout = 15
+set move = no
+
+bind editor <space> noop
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
+macro index gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail"
+macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+
+set header_cache = "~/.mutt/cache/headers"
+set message_cachedir = "~/.mutt/cache/bodies"
+set certificate_file = "~/.mutt/certificates"
+
+set send_charset = "utf-8"
+set editor = "vim -c 'set syntax=mail ft=mail enc=utf-8 textwidth=72 wrap'"
+set menu_scroll = yes # one line scroll
+set simple_search = "~f %s | ~C %s | ~s %s" # search in To, Cc and Subject
+set pager_index_lines = 6
+
+# threading preferences, sort by threads
+set sort = threads
+set sort_aux = last-date-received
+set strict_threads = yes
+
+# revelant headers
+ignore *
+unignore From To Cc Bcc Date Subject
+# headers order
+unhdr_order *
+hdr_order From: To: Cc: Bcc: Date: Subject:
+
+color normal      white          black
+color hdrdefault  green          default
+color quoted      green          default
+color quoted1     yellow         default
+color quoted2     red            default
+color signature   cyan           default
+color indicator   brightyellow   red
+color error       brightred      default
+color status      brightwhite    blue 
+color tree        brightmagenta  black
+color tilde       blue           default
+color attachment  brightyellow   default
+color markers     brightred      default
+color message     white          black
+color search      brightwhite    magenta
+color bold        brightyellow   default
+
+#source ~/.aliases

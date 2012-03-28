@@ -14,7 +14,8 @@ CONFIGS := \
 		  gvimrc \
 		  config.fish \
 		  zathurarc \
-		  sqliterc
+		  sqliterc \
+		  muttrc
 
 # trailing slash is mandatory
 DIRS := \
@@ -25,8 +26,6 @@ COLLECT_DEST := .
 
 INSTALL.PATH := $(PREFIX)
 INSTALL.PATH.xmonad.hs := $(PREFIX)/.xmonad
-INSTALL.PATH.stline.vim := $(PREFIX)/.vim/autoload
-INSTALL.PATH.zenburn.vim := $(PREFIX)/.vim/colors
 INSTALL.PATH.config.fish := $(PREFIX)/.config/fish
 INSTALL.PATH.zathurarc := $(PREFIX)/.config/zathura
 
