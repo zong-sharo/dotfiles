@@ -34,12 +34,13 @@ BACKUP := numbered
 INSTALL.MODE := 644
 INSTALL.MODE.xinitrc := 755
 
-SUBPATHS := FISH_FUNCTIONS PENTADACTYL_PLUGINS BIN_FILES VIM_AUTOLOAD VIM_COLORS
+SUBPATHS := FISH_FUNCTIONS PENTADACTYL_PLUGINS BIN_FILES VIM_AUTOLOAD VIM_COLORS VIM_PLUGIN
 FISH_FUNCTIONS := fish-functions .config/fish/functions
 PENTADACTYL_PLUGINS := pentadactyl-plugins .pentadactyl/plugins
 BIN_FILES := bin bin
 VIM_AUTOLOAD := vim/autoload .vim/autoload
 VIM_COLORS := vim/colors .vim/colors
+VIM_PLUGIN := vim/plugin .vim/plugin
 
 SUBPATHS.INSTALL.MODE.BIN_FILES := 755
 
