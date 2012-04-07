@@ -39,6 +39,10 @@ unignore From To Cc Bcc Date Subject
 unhdr_order *
 hdr_order From: To: Cc: Bcc: Date: Subject:
 
+set alias_file = ~/.mutt/aliases
+set sort_alias = alias
+source $alias_file
+
 color normal      white          black
 color hdrdefault  green          default
 color quoted      green          default
@@ -56,4 +60,3 @@ color message     white          black
 color search      brightwhite    magenta
 color bold        brightyellow   default
 
-#source ~/.aliases
