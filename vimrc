@@ -1,7 +1,19 @@
-set nocompatible
 set shell=/bin/sh
+" * vundle
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
 
-" == Look
+" bundles
+Bundle 'gmarik/vundle'
+Bundle 'vimwiki'
+Bundle 'gnupg.vim'
+
+filetype indent on
+" vundle init done
+
+" * Look
 set number
 set numberwidth=6
 set showcmd
@@ -11,14 +23,14 @@ colorscheme zenburn
 hi Pmenu          guifg=#7f8f8f guibg=#464646
 set listchars=eol:$,tab:»»,trail:·,nbsp:~
 
-" === Statusline ===
+" * Statusline
 set laststatus=2
 set statusline=%1*\ \|%n\|\
 \ %2*%{stline#Filename()}\
 \ %3*%{stline#Bufferstate()}%1*\|%{stline#Fileinfo(':')}\|\
 \ %=%{stline#Tabinfo()}%5l/%L,%-5v%2*%3P
 
-" == Behavior ==
+" * Behavior
 set nofoldenable
 set wildmenu
 set linebreak
@@ -31,18 +43,17 @@ set fileencodings=utf8
 set mousemodel=extend " mouse behavior like gpm
 set completeopt=menu " no previev
 
-" == Binds  ===
+" ** Binds
 map <C-N> <C-X><C-O>
 "omni completion, broken bind XXX
 map <S-Insert> <MiddleMouse>
 
-" === Search ===
+" ** Search
 set hlsearch 
 set ignorecase smartcase
 set incsearch 
 
-" === Indent ===
-filetype plugin indent on
+" ** Indent
 set nocindent
 set autoindent
 set tabstop=4
@@ -50,25 +61,26 @@ set expandtab
 set softtabstop=4
 set shiftwidth=4
 
-" == Backup ==
+" ** Backup
 set backup
 set backupdir=~/.vimbackup
 set backupext=.bak
 set dir=~/.vimswp
 
-" == TOhtml ==
-let html_number_lines=0
-let html_use_css=1
-let html_use_encoding='UTF-8'
+" * viki.vim
+autocmd BufRead,BufNewFile *.viki set filetype=viki
+autocmd BufEnter *.viki setlocal tabstop=2 softtabstop=2 shiftwidth=2
+let g:vikiUpperCharacters="A-ZА-Я"
+let g:vikiLowerCharacters="a-zа-я"
+hi! link vikiInexistentLink Error
+let g:viki_highlight_inexistent_dark=""
+"let g:vikiFancyHeadings=1
 
-" == grep.vim ==
-let Grep_Default_Options = '-i'
+if filereadable($HOME."/notes/.vimrc")
+    source ~/notes/.vimrc
+endif
 
-" == Vimwiki ==
-let g:vimwiki_home="~/vimwiki/"
-autocmd BufEnter *.wiki set shiftwidth=1
-
-" == Digraphs ==
+" * Digraphs
 
 " utility command to define digraphs by hex
 function l:d(args)
@@ -83,7 +95,7 @@ com -nargs=+ Dig call l:d('<args>')
 " otherwise switch to it
 nmap <Leader>d :redir @a<CR>:silent digraphs<CR>:redir END<CR>:new<CR>:put! a<CR>:let @a=@_<CR>
 
-" === superscripts and subscripts ===
+" ** superscripts and subscripts
 dig S0 8304 " ⁰
 dig S1 185  " ¹
 dig S2 178  " ²
@@ -119,7 +131,7 @@ dig s( 8333 " ₍
 dig s) 8334 " ₎
 dig si 7522 " ᵢ
 
-" === math symbols ===
+" ** math symbols
 Dig \|= 0x22a7 " ⊧ models
 "⊨ u022a8 is 'true', but u22a8 does not fits in single cell
 " u022ad 'not true'
