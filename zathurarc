@@ -16,7 +16,7 @@ set recolor yes
 # set completion_bgcolor #1e2320
 set completion_fgcolor #acbc90
 
-set font Courier New 12
+set font Ubuntu Mono 13
 
 set n_completion_items 20
 set save_position yes

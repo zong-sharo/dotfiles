@@ -1,5 +1,5 @@
-Rxvt*font:xft:Courier New:size=12
-Rxvt*boldFont:xft:Courier New:bold:size=12
+Rxvt*font:xft:Ubuntu Mono:size=13
+Rxvt*boldFont:xft:Ubuntu Mono:bold:size=13
 
 Rxvt*jumpScroll:true
 Rxvt*mouseWheelScrollPage:true
