@@ -63,13 +63,17 @@ set shiftwidth=4
 
 " ** Backup
 set backup
-set backupdir=~/.vimbackup
+set backupdir=~/.vim/backup
 set backupext=.bak
-set dir=~/.vimswp
+set dir=~/.vim/swp
+
+" ** Persistent Undo
+set undofile
+set undodir=~/.vim/undo
 
 " * viki.vim
 autocmd BufRead,BufNewFile *.viki set filetype=viki
-autocmd BufEnter *.viki setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType viki setlocal tabstop=2 softtabstop=2 shiftwidth=2
 let g:vikiUpperCharacters="A-ZА-Я"
 let g:vikiLowerCharacters="a-zа-я"
 hi! link vikiInexistentLink Error

@@ -19,8 +19,9 @@ CONFIGS := \
 
 # trailing slash is mandatory
 DIRS := \
-		.vimbackup/ \
-		.vimswp/
+		.vim/backup/ \
+		.vim/swp/ \
+		.vim/undo
 PREFIX := $(HOME)
 COLLECT_DEST := .
 
