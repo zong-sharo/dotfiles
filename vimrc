@@ -9,6 +9,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'vimwiki'
 Bundle 'gnupg.vim'
+Bundle 'Raimondi/delimitMate'
 
 filetype indent on
 " vundle init done
@@ -34,7 +35,7 @@ set statusline=%1*\ \|%n\|\
 set nofoldenable
 set wildmenu
 set linebreak
-"set textwidth=70
+set textwidth=80
 set matchpairs=(:),{:},[:],<:> " ??/:/??
 set backspace=indent,eol,start " backspace for insert mode
 set history=1000
@@ -42,6 +43,8 @@ set encoding=utf8
 set fileencodings=utf8
 set mousemodel=extend " mouse behavior like gpm
 set completeopt=menu " no previev
+" default ft is text
+autocmd BufEnter * if &filetype == "" | setlocal ft=text | endif
 
 " ** Binds
 map <C-N> <C-X><C-O>
@@ -71,7 +74,7 @@ set dir=~/.vim/swp
 set undofile
 set undodir=~/.vim/undo
 
-" * viki.vim
+" * vimwiki
 autocmd BufRead,BufNewFile *.viki set filetype=viki
 autocmd FileType viki setlocal tabstop=2 softtabstop=2 shiftwidth=2
 let g:vikiUpperCharacters="A-ZА-Я"
@@ -83,6 +86,11 @@ let g:viki_highlight_inexistent_dark=""
 if filereadable($HOME."/notes/.vimrc")
     source ~/notes/.vimrc
 endif
+
+" * delimitMate
+let delimitMate_expand_space = 1
+let delimitMate_expand_cr = 1
+let delimitMate_excluded_ft = "mail,text,viki"
 
 " * Digraphs
 
