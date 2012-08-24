@@ -1,5 +1,5 @@
-Rxvt*font:xft:Ubuntu Mono:size=13
-Rxvt*boldFont:xft:Ubuntu Mono:bold:size=13
+Rxvt*font:xft:Droid Sans Mono:size=11
+Rxvt*boldFont:xft:Droid Sans Mono:bold:size=11
 
 Rxvt*jumpScroll:true
 Rxvt*mouseWheelScrollPage:true
@@ -13,29 +13,22 @@ Rxvt*cursorBlink:false
 Rxvt*background:#3f3f3f
 Rxvt*foreground:#dcdccc
 
-Rxvt*pointerColorBackground:#3f3f3f
-Rxvt*pointerColor:#dcdccc
+Rxvt*cursorColor:#8faf9f
 
-Rxvt*cursorColor:#ff9020
-
-!light yellow
-Rxvt*colorBD:#f0dfaf
-!light red
-Rxvt*colorUL:#dca3a3
-
-Rxvt*color0:#3f3f3f
-Rxvt*color1:#e37170
-Rxvt*color2:#60b48a
-Rxvt*color3:#dfaf8f
-Rxvt*color4:#506070
-Rxvt*color5:#dc8cc3
-Rxvt*color6:#8cd0d3
-Rxvt*color7:#dcdccc
-Rxvt*color8:#709080
-Rxvt*color9:#dca3a3
-Rxvt*color10:#c3bf9f
-Rxvt*color11:#f0dfaf
-Rxvt*color12:#94bff3
-Rxvt*color13:#ec93d3
-Rxvt*color14:#93e0e3
-Rxvt*color15:#ffffff
+! xcolors zenburn
+*color0:  #1E2320
+*color1:  #705050
+*color2:  #60b48a
+*color3:  #dfaf8f
+*color4:  #506070
+*color5:  #dc8cc3
+*color6:  #8cd0d3
+*color7:  #dcdccc
+*color8:  #709080
+*color9:  #dca3a3
+*color10: #c3bf9f
+*color11: #f0dfaf
+*color12: #94bff3
+*color13: #ec93d3
+*color14: #93e0e3
+*color15: #ffffff
