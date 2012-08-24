@@ -10,26 +10,43 @@ Bundle 'gmarik/vundle'
 Bundle 'vimwiki'
 Bundle 'gnupg.vim'
 Bundle 'Raimondi/delimitMate'
+Bundle 'tpope/vim-surround'
 
-filetype indent on
+" colorthemes
+Bundle 'jnurmine/Zenburn'
+
+filetype plugin indent on
 " vundle init done
+
+" * Colorscheme
+syntax on
+set background=dark
+colorscheme zenburn
 
 " * Look
 set number
 set numberwidth=6
 set showcmd
 set noshowmode
-syntax on
-colorscheme zenburn
-hi Pmenu          guifg=#7f8f8f guibg=#464646
 set listchars=eol:$,tab:»»,trail:·,nbsp:~
+set winminheight=0
 
 " * Statusline
 set laststatus=2
-set statusline=%1*\ \|%n\|\
-\ %2*%{stline#Filename()}\
-\ %3*%{stline#Bufferstate()}%1*\|%{stline#Fileinfo(':')}\|\
-\ %=%{stline#Tabinfo()}%5l/%L,%-5v%2*%3P
+set statusline=
+"set statusline+=%1*                          " User1
+set statusline+=\ \|%n\|                      " buf no
+"set statusline+=%2*                          " User2
+set statusline+=\ %{stline#Filename()}        " fname
+"set statusline+=%3*                          " User3
+set statusline+=\ %{stline#Bufferstate()}     " ro/rw/unsaved/help
+"set statusline+=%1*                          " User1
+set statusline+=\|%{stline#Fileinfo(':')}\|   " finfo
+set statusline+=\ %=                          " rpadding
+set statusline+=%{stline#Tabinfo()}           " tabstop/softabstop
+set statusline+=\ %5l/%L,%-5v                 " line/total,col
+"set statusline+=%2*                          " User2
+set statusline+=%3P                           " perc through file
 
 " * Behavior
 set nofoldenable
@@ -75,13 +92,9 @@ set undofile
 set undodir=~/.vim/undo
 
 " * vimwiki
-autocmd BufRead,BufNewFile *.viki set filetype=viki
-autocmd FileType viki setlocal tabstop=2 softtabstop=2 shiftwidth=2
-let g:vikiUpperCharacters="A-ZА-Я"
-let g:vikiLowerCharacters="a-zа-я"
-hi! link vikiInexistentLink Error
-let g:viki_highlight_inexistent_dark=""
-"let g:vikiFancyHeadings=1
+autocmd FileType vimwiki setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd Filetype vimwiki setlocal listchars=trail:· list
+let g:vimwiki_ext2syntax = {'.wiki': 'markdown'} "markdown everywhere
 
 if filereadable($HOME."/notes/.vimrc")
     source ~/notes/.vimrc
@@ -90,7 +103,8 @@ endif
 " * delimitMate
 let delimitMate_expand_space = 1
 let delimitMate_expand_cr = 1
-let delimitMate_excluded_ft = "mail,text,viki"
+let delimitMate_excluded_ft = "mail,text,vimwiki"
+autocmd FileType c setlocal matchpairs-=<:>
 
 " * Digraphs
 
