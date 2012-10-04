@@ -9,7 +9,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'vimwiki'
 Bundle 'gnupg.vim'
-Bundle 'Raimondi/delimitMate'
 Bundle 'tpope/vim-surround'
 
 " colorthemes
@@ -62,6 +61,7 @@ set mousemodel=extend " mouse behavior like gpm
 set completeopt=menu " no previev
 " default ft is text
 autocmd BufEnter * if &filetype == "" | setlocal ft=text | endif
+autocmd BufEnter * setlocal bufhidden=delete "auto-clean buffers
 
 " ** Binds
 map <C-N> <C-X><C-O>
@@ -93,17 +93,13 @@ set undodir=~/.vim/undo
 
 " * vimwiki
 autocmd FileType vimwiki setlocal tabstop=2 softtabstop=2 shiftwidth=2
-autocmd Filetype vimwiki setlocal listchars=trail:· list
+"autocmd Filetype vimwiki setlocal listchars=trail:· list
 let g:vimwiki_ext2syntax = {'.wiki': 'markdown'} "markdown everywhere
 
 if filereadable($HOME."/notes/.vimrc")
     source ~/notes/.vimrc
 endif
 
-" * delimitMate
-let delimitMate_expand_space = 1
-let delimitMate_expand_cr = 1
-let delimitMate_excluded_ft = "mail,text,vimwiki"
 autocmd FileType c setlocal matchpairs-=<:>
 
 " * Digraphs

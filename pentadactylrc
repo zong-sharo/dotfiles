@@ -21,3 +21,5 @@ map <Leader>t <C-Z><C-2><Esc>
 set! browser.sessionstore.max_concurrent_tabs=0
 
 hi StatusLineNormal color: black !important; background: #a0a0a0 !important;
+
+set hintkeys=fdsartgbvecwxqyiopmnhzulkj
