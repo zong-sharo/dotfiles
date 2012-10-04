@@ -3,8 +3,10 @@ source ~/.vimperatorrc.sensitive
 set focuscontent
 set hlsearch
 
-set guioptions=bn
-set complete+=t
+set gui=noaddons,nobookmarks,nomenu,nonavigation,tabs
+set noscrollbars
+set hintchars=fdsartgbvecwxqyiopmnhzulkj
+set complete=stlf
 set urlseparator=''
 set showstatuslinks=2
 set newtab=all
