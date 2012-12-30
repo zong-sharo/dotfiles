@@ -1,28 +1,30 @@
-set adjust_open width
+set adjust-open width
 
-set statusbar_bgcolor #8c9c70
-set statusbar_fgcolor black
+set statusbar-bg "#8c9c70"
+set statusbar-fg "black"
 
-set inputbar_bgcolor #3f3f3f
-set inputbar_fgcolor #dcdccc
+set inputbar-bg "#3f3f3f"
+set inputbar-fg "#dcdccc"
 
-set recolor_darkcolor #dcdccc
-set recolor_lightcolor #3f3f3f
-set default_bgcolor #333333
+set notification-warning-bg "#3f3f3f"
+set notification-error-bg "#3f3f3f"
+
+set recolor-darkcolor "#dcdccc"
+set recolor-lightcolor "#3f3f3f"
+set default-bgcolor "#333333"
 # how to change link color?
-set recolor yes
+set recolor true
+set default-fg red
 
 # actually i do like zathura's original more
 # set completion_bgcolor #1e2320
-set completion_fgcolor #acbc90
+set completion-fg "#acbc90"
 
-set font Ubuntu Mono 13
+set font "Ubuntu Mono 13"
 
-set n_completion_items 20
-set save_position yes
-set save_zoom_level yes
-
-set show_inputbar false
+set n-completion-items 20
+#set save-position yes
+#set save-zoom-level yes
 
 #TODO: index stuff, default_bgcolor=white on recolor=no
 map I recolor
