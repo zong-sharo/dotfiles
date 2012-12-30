@@ -30,6 +30,11 @@ set noshowmode
 set listchars=eol:$,tab:»»,trail:·,nbsp:~
 set winminheight=0
 
+" put linebreak marks at lineno column
+let &showbreak='↪     ' " matches numberwidth
+set cpoptions+=n
+set highlight+=@:LineNr
+
 " * Statusline
 set laststatus=2
 set statusline=
