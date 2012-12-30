@@ -136,22 +136,38 @@ dig S) 8318 " ⁾
 dig Si 8305 " ⁱ
 dig Sn 8319 " ⁿ
 
-dig s0 8320 " ₀
-dig s1 8321 " ₁
-dig s2 8322 " ₂
-dig s3 8323 " ₃
-dig s4 8324 " ₄
-dig s5 8325 " ₅
-dig s6 8326 " ₆
-dig s7 8327 " ₇
-dig s8 8328 " ₈
-dig s9 8329 " ₉
-dig s+ 8330 " ₊
-dig s- 8331 " ₋
-dig s= 8332 " ₌
-dig s( 8333 " ₍
-dig s) 8334 " ₎
-dig si 7522 " ᵢ
+Dig s0 0x2080 " ₀
+Dig s1 0x2081 " ₁
+Dig s2 0x2082 " ₂
+Dig s3 0x2083 " ₃
+Dig s4 0x2084 " ₄
+Dig s5 0x2085 " ₅
+Dig s6 0x2086 " ₆
+Dig s7 0x2087 " ₇
+Dig s8 0x2088 " ₈
+Dig s9 0x2089 " ₉
+Dig s+ 0x208A " ₊
+Dig s- 0x208B " ₋
+Dig s= 0x208C " ₌
+Dig s( 0x208D " ₍
+Dig s) 0x208E " ₎
+Dig sa 0x2090 " ₐ LATIN SUBSCRIPT SMALL LETTER A
+Dig se 0x2091 " ₑ LATIN SUBSCRIPT SMALL LETTER E
+Dig sh 0x2095 " ₕ LATIN SUBSCRIPT SMALL LETTER H
+Dig si 0x1D62 " ᵢ LATIN SUBSCRIPT SMALL LETTER I
+Dig sj 0x2C7C " ⱼ LATIN SUBSCRIPT SMALL LETTER J
+Dig sk 0x2096 " ₖ LATIN SUBSCRIPT SMALL LETTER K
+Dig sl 0x2097 " ₗ LATIN SUBSCRIPT SMALL LETTER L
+Dig sm 0x2098 " ₘ LATIN SUBSCRIPT SMALL LETTER M
+Dig sn 0x2099 " ₙ LATIN SUBSCRIPT SMALL LETTER N
+Dig so 0x2092 " ₒ LATIN SUBSCRIPT SMALL LETTER O
+Dig sp 0x209A " ₚ LATIN SUBSCRIPT SMALL LETTER P
+Dig sr 0x1D63 " ᵣ LATIN SUBSCRIPT SMALL LETTER R
+Dig ss 0x209B " ₛ LATIN SUBSCRIPT SMALL LETTER S
+Dig st 0x209C " ₜ LATIN SUBSCRIPT SMALL LETTER T
+Dig su 0x1D64 " ᵤ LATIN SUBSCRIPT SMALL LETTER U
+Dig sv 0x1D65 " ᵥ LATIN SUBSCRIPT SMALL LETTER V
+Dig sx 0x2093 " ₓ LATIN SUBSCRIPT SMALL LETTER X
 
 " ** math symbols
 Dig \|= 0x22a7 " ⊧ models
