@@ -17,6 +17,9 @@ if test -d ~/local
 
     set -gx PATH $PATH (find ~/local -maxdepth 3 -regex '.*/bin\(32\|64\)?' -type d)
     set -gx LD_LIBRARY_PATH $LD_LIBRARY_PATH (find ~/local -maxdepth 3 -regex '.*/lib\(32\|64\)?')
+    if set -q MANPATH ; else set -gx MANPATH (manpath); end
+    # whole manpath output placed into MANPATH[1], this is incorrect, but turns
+    # out to work okay after all
     set -gx MANPATH $MANPATH (find ~/local -maxdepth 3 -path '*/share/man' -type d)
 
 end
